@@ -9,24 +9,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Editar perfil — Enchúfate</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
     <link href="~/css/perfil.css" rel="stylesheet" />
 </head>
 <body>
     <div class="perfil-navbar">
-        <div class="brand">☁️ enchúfate</div>
-        <a asp-action="Logout" asp-controller="Account">Cerrar sesión</a>
+        <div class="brand"><i class="bi bi-cloud-fill"></i> <span class="d-none d-md-inline">enchúfate</span></div>
+
+        <div class="d-flex align-items-center gap-3">
+            <a asp-action="Logout" asp-controller="Account" class="d-none d-md-inline">Cerrar sesión</a>
+
+            <span class="d-inline d-md-none usuario-nombre-mobile">@Model.Nombre.Split(' ')[0] @Model.PrimerApellido @Model.SegundoApellido</span>
+            <a asp-action="Logout" asp-controller="Account" class="btn-logout-icon d-flex d-md-none" title="Cerrar sesión">
+                <i class="bi bi-box-arrow-right"></i>
+            </a>
+        </div>
     </div>
 
     <div class="perfil-container">
         <div class="perfil-card">
-            <div class="d-flex justify-content-between align-items-start mb-2">
+            <div class="mb-3">
                 <div>
                     <h2>Editar mis datos</h2>
                     <p class="subtitle">Actualiza tu información personal</p>
                 </div>
-                <div class="d-flex gap-2">
-                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
-                    <button form="formEditar" type="submit" class="btn btn-primary">Guardar</button>
+                <div class="d-flex gap-2 mt-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary flex-fill">Cancelar</a>
+                    <button form="formEditar" type="submit" class="btn btn-primary flex-fill">Guardar</button>
                 </div>
             </div>
 
@@ -37,8 +46,8 @@
 
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Nombres</label>
-                    <input asp-for="Nombres" class="form-control" />
-                    <span asp-validation-for="Nombres" class="text-danger small"></span>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger small"></span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Primer apellido</label>

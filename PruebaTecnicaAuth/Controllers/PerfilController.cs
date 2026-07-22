@@ -31,7 +31,7 @@ namespace PruebaTecnicaAuth.Controllers
 
             var modelo = new PerfilViewModel
             {
-                Nombres = usuario.Nombre,
+                Nombre = usuario.Nombre,
                 PrimerApellido = usuario.PrimerApellido,
                 SegundoApellido = usuario.SegundoApellido,
                 Email = usuario.Email ?? string.Empty,
@@ -54,7 +54,7 @@ namespace PruebaTecnicaAuth.Controllers
             var usuario = await _userManager.GetUserAsync(User);
             if (usuario == null) return RedirectToAction("Login", "Account");
 
-            usuario.Nombre = modelo.Nombres;
+            usuario.Nombre = modelo.Nombre;
             usuario.PrimerApellido = modelo.PrimerApellido;
             usuario.SegundoApellido = modelo.SegundoApellido;
             usuario.Email = modelo.Email;

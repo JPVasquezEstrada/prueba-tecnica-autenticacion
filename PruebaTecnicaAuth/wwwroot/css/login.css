@@ -179,3 +179,20 @@
         display: none;
     }
 }
+
+/* Franja superior — SOLO MÓVIL */
+.login-topbar {
+    background: #0f203e;
+    color: #fff;
+    padding: .75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: .5px;
+}
+
+    .login-topbar i {
+        font-size: 1.3rem;
+    }

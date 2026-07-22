@@ -5,7 +5,7 @@ namespace PruebaTecnicaAuth.Models
     public class PerfilViewModel
     {
         [Required(ErrorMessage = "El nombre es obligatorio.")]
-        public string Nombres { get; set; } = string.Empty;
+        public string Nombre { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El primer apellido es obligatorio.")]
         public string PrimerApellido { get; set; } = string.Empty;
