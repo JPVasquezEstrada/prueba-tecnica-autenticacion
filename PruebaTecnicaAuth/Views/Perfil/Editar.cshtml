@@ -13,68 +13,178 @@
     <link href="~/css/perfil.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="perfil-navbar">
-        <div class="brand"><i class="bi bi-cloud-fill"></i> <span class="d-none d-md-inline">enchúfate</span></div>
 
-        <div class="d-flex align-items-center gap-3">
-            <a asp-action="Logout" asp-controller="Account" class="d-none d-md-inline">Cerrar sesión</a>
+    <!-- ================= VERSIÓN MÓVIL / TABLET ================= -->
+    <div class="d-lg-none">
 
-            <span class="d-inline d-md-none usuario-nombre-mobile">@Model.Nombre.Split(' ')[0] @Model.PrimerApellido @Model.SegundoApellido</span>
-            <a asp-action="Logout" asp-controller="Account" class="btn-logout-icon d-flex d-md-none" title="Cerrar sesión">
-                <i class="bi bi-box-arrow-right"></i>
-            </a>
-        </div>
-    </div>
+        <div class="perfil-navbar">
+            <div class="brand"><i class="bi bi-cloud-fill"></i> <span class="d-none d-md-inline">enchúfate</span></div>
 
-    <div class="perfil-container">
-        <div class="perfil-card">
-            <div class="mb-3">
-                <div>
-                    <h2>Editar mis datos</h2>
-                    <p class="subtitle">Actualiza tu información personal</p>
-                </div>
-                <div class="d-flex gap-2 mt-2">
-                    <a asp-action="Index" class="btn btn-outline-secondary flex-fill">Cancelar</a>
-                    <button form="formEditar" type="submit" class="btn btn-primary flex-fill">Guardar</button>
-                </div>
+            <div class="d-flex align-items-center gap-3">
+                <a asp-action="Logout" asp-controller="Account" class="d-none d-md-inline">Cerrar sesión</a>
+
+                <span class="d-inline d-md-none usuario-nombre-mobile">@Model.Nombre.Split(' ')[0] @Model.PrimerApellido @Model.SegundoApellido</span>
+                <a asp-action="Logout" asp-controller="Account" class="btn-logout-icon d-flex d-md-none" title="Cerrar sesión">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
             </div>
+        </div>
 
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="perfil-container">
+            <div class="perfil-card">
+                <div class="mb-3">
+                    <div>
+                        <h2>Editar mis datos</h2>
+                        <p class="subtitle">Actualiza tu información personal</p>
+                    </div>
+                    <div class="d-flex gap-2 mt-2">
+                        <a asp-action="Index" class="btn btn-outline-secondary flex-fill">Cancelar</a>
+                        <button form="formEditar" type="submit" class="btn btn-primary flex-fill">Guardar</button>
+                    </div>
+                </div>
 
-            <form id="formEditar" asp-action="Editar" asp-controller="Perfil" method="post" class="row mt-3">
-                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Nombres</label>
-                    <input asp-for="Nombre" class="form-control" />
-                    <span asp-validation-for="Nombre" class="text-danger small"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Primer apellido</label>
-                    <input asp-for="PrimerApellido" class="form-control" />
-                    <span asp-validation-for="PrimerApellido" class="text-danger small"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Segundo apellido</label>
-                    <input asp-for="SegundoApellido" class="form-control" />
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Correo principal</label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger small"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Teléfono móvil</label>
-                    <input asp-for="Telefono" class="form-control" />
-                    <span asp-validation-for="Telefono" class="text-danger small"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Fecha de nacimiento</label>
-                    <input asp-for="FechaNacimiento" type="date" class="form-control" />
-                </div>
-            </form>
+                <form id="formEditar" asp-action="Editar" asp-controller="Perfil" method="post" class="row mt-3">
+                    @Html.AntiForgeryToken()
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Nombres</label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Primer apellido</label>
+                        <input asp-for="PrimerApellido" class="form-control" />
+                        <span asp-validation-for="PrimerApellido" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Segundo apellido</label>
+                        <input asp-for="SegundoApellido" class="form-control" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Correo principal</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Teléfono móvil</label>
+                        <input asp-for="Telefono" class="form-control" />
+                        <span asp-validation-for="Telefono" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Fecha de nacimiento</label>
+                        <input asp-for="FechaNacimiento" type="date" class="form-control" />
+                        <span asp-validation-for="FechaNacimiento" class="text-danger small"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= VERSIÓN ESCRITORIO (≥992px) ================= -->
+    <div class="perfil-navbar d-none d-lg-flex">
+        <div class="brand"><i class="bi bi-cloud-fill"></i> <span>enchúfate</span></div>
+        <div class="d-flex align-items-center gap-3">
+            <span>@Model.Nombre @Model.PrimerApellido</span>
+            <a asp-action="Index">Cancelar</a>
         </div>
     </div>
+
+    <form asp-action="Editar" asp-controller="Perfil" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="perfil-desktop-wrapper d-none d-lg-block">
+            <div class="row-inner">
+
+                <!-- Panel lateral -->
+                <div class="perfil-side">
+                    <div class="perfil-avatar">
+                        @(Model.Nombre.Length > 0 ? Model.Nombre[0].ToString() : "")@(Model.PrimerApellido.Length > 0 ? Model.PrimerApellido[0].ToString() : "")
+                    </div>
+                    <h2>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</h2>
+                    <p class="rol">Editando información</p>
+                    <span class="badge bg-warning text-dark">Modo edición</span>
+                </div>
+
+                <!-- Panel principal -->
+                <div class="perfil-main">
+                    <div class="perfil-main-header">
+                        <div>
+                            <h3>Editar información básica</h3>
+                            <p class="subtitle">Actualiza tus datos personales</p>
+                        </div>
+                    </div>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger small mt-2"></div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="dato-item">
+                                <div class="dato-icono"><i class="bi bi-person"></i></div>
+                                <div class="w-100">
+                                    <div class="dato-label">Nombres</div>
+                                    <input asp-for="Nombre" class="dato-input" />
+                                    <span asp-validation-for="Nombre" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="dato-item">
+                                <div class="dato-icono"><i class="bi bi-person-badge"></i></div>
+                                <div class="w-100">
+                                    <div class="dato-label">Primer apellido</div>
+                                    <input asp-for="PrimerApellido" class="dato-input" />
+                                    <span asp-validation-for="PrimerApellido" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="dato-item">
+                                <div class="dato-icono"><i class="bi bi-person-badge"></i></div>
+                                <div class="w-100">
+                                    <div class="dato-label">Segundo apellido</div>
+                                    <input asp-for="SegundoApellido" class="dato-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="dato-item">
+                                <div class="dato-icono"><i class="bi bi-envelope"></i></div>
+                                <div class="w-100">
+                                    <div class="dato-label">Correo principal</div>
+                                    <input asp-for="Email" class="dato-input" />
+                                    <span asp-validation-for="Email" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="dato-item">
+                                <div class="dato-icono"><i class="bi bi-telephone"></i></div>
+                                <div class="w-100">
+                                    <div class="dato-label">Teléfono móvil</div>
+                                    <input asp-for="Telefono" class="dato-input" />
+                                    <span asp-validation-for="Telefono" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="dato-item">
+                                <div class="dato-icono"><i class="bi bi-calendar3"></i></div>
+                                <div class="w-100">
+                                    <div class="dato-label">Fecha de nacimiento</div>
+                                    <input asp-for="FechaNacimiento" type="date" class="dato-input" />
+                                    <span asp-validation-for="FechaNacimiento" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="perfil-main-footer">
+                        <a asp-action="Index" class="btn btn-outline-secondary me-2">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check2"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
     @await Html.PartialAsync("_ModalExpiracion")
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <partial name="_ValidationScriptsPartial" />

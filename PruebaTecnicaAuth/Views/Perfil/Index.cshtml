@@ -28,50 +28,141 @@
             </a>
         </div>
     </div>
+    <div class="perfil-container d-lg-none">
+        <!-- tu contenido actual, sin tocar nada adentro -->
+        
 
-    <div class="perfil-container">
-        <div class="perfil-card">
-            <div class="d-flex justify-content-between align-items-start">
-                <div>
-                    <h2>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</h2>
-                    <p class="subtitle">@Model.UserName · <span class="badge bg-success">Activo</span></p>
+        <div class="perfil-container">
+            <div class="perfil-card">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h2>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</h2>
+                        <p class="subtitle">@Model.UserName · <span class="badge bg-success">Activo</span></p>
+                    </div>
+                    <a asp-action="Editar" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
                 </div>
-                <a asp-action="Editar" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
-            </div>
 
-            @if (TempData["Mensaje"] != null)
-            {
-                <div class="alert alert-success">@TempData["Mensaje"]</div>
-            }
+                @if (TempData["Mensaje"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Mensaje"]</div>
+                }
 
-            <div class="row mt-3">
-                <div class="col-md-6 perfil-field mb-3">
-                    <label>Nombres</label>
-                    <div class="valor">@Model.Nombre</div>
-                </div>
-                <div class="col-md-6 perfil-field mb-3">
-                    <label>Primer apellido</label>
-                    <div class="valor">@Model.PrimerApellido</div>
-                </div>
-                <div class="col-md-6 perfil-field mb-3">
-                    <label>Segundo apellido</label>
-                    <div class="valor">@Model.SegundoApellido</div>
-                </div>
-                <div class="col-md-6 perfil-field mb-3">
-                    <label>Correo principal</label>
-                    <div class="valor">@Model.Email</div>
-                </div>
-                <div class="col-md-6 perfil-field mb-3">
-                    <label>Teléfono móvil</label>
-                    <div class="valor">@(Model.PhoneNumber ?? "—")</div>
-                </div>
-                <div class="col-md-6 perfil-field mb-3">
-                    <label>Fecha de nacimiento</label>
-                    <div class="valor">@(Model.FechaNacimiento?.ToString("dd/MM/yyyy") ?? "—")</div>
+                <div class="row mt-3">
+                    <div class="col-md-6 perfil-field mb-3">
+                        <label>Nombres</label>
+                        <div class="valor">@Model.Nombre</div>
+                    </div>
+                    <div class="col-md-6 perfil-field mb-3">
+                        <label>Primer apellido</label>
+                        <div class="valor">@Model.PrimerApellido</div>
+                    </div>
+                    <div class="col-md-6 perfil-field mb-3">
+                        <label>Segundo apellido</label>
+                        <div class="valor">@Model.SegundoApellido</div>
+                    </div>
+                    <div class="col-md-6 perfil-field mb-3">
+                        <label>Correo principal</label>
+                        <div class="valor">@Model.Email</div>
+                    </div>
+                    <div class="col-md-6 perfil-field mb-3">
+                        <label>Teléfono móvil</label>
+                        <div class="valor">@(Model.PhoneNumber ?? "—")</div>
+                    </div>
+                    <div class="col-md-6 perfil-field mb-3">
+                        <label>Fecha de nacimiento</label>
+                        <div class="valor">@(Model.FechaNacimiento?.ToString("dd/MM/yyyy") ?? "—")</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="perfil-desktop-wrapper d-none d-lg-block">
+        <div class="row-inner">
+
+            <!-- Panel lateral -->
+            <div class="perfil-side">
+                <div class="perfil-avatar">
+                    @(Model.Nombre.Length > 0 ? Model.Nombre[0].ToString() : "")@(Model.PrimerApellido.Length > 0 ? Model.PrimerApellido[0].ToString() : "")
+                </div>
+                <h2>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</h2>
+                <p class="rol">@Model.UserName</p>
+                <span class="badge bg-success">Activo</span>
+            </div>
+
+            <!-- Panel principal -->
+            <div class="perfil-main">
+                <div class="perfil-main-header">
+                    <div>
+                        <h3>Información básica</h3>
+                        <p class="subtitle">Estos son tus datos personales registrados</p>
+                    </div>
+                </div>
+
+                @if (TempData["Mensaje"] != null)
+                {
+                    <div class="alert alert-success mt-3">@TempData["Mensaje"]</div>
+                }
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="dato-item">
+                            <div class="dato-icono"><i class="bi bi-person"></i></div>
+                            <div>
+                                <div class="dato-label">Nombres</div>
+                                <div class="dato-valor">@Model.Nombre</div>
+                            </div>
+                        </div>
+                        <div class="dato-item">
+                            <div class="dato-icono"><i class="bi bi-person-badge"></i></div>
+                            <div>
+                                <div class="dato-label">Primer apellido</div>
+                                <div class="dato-valor">@Model.PrimerApellido</div>
+                            </div>
+                        </div>
+                        <div class="dato-item">
+                            <div class="dato-icono"><i class="bi bi-person-badge"></i></div>
+                            <div>
+                                <div class="dato-label">Segundo apellido</div>
+                                <div class="dato-valor">@Model.SegundoApellido</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="dato-item">
+                            <div class="dato-icono"><i class="bi bi-envelope"></i></div>
+                            <div>
+                                <div class="dato-label">Correo principal</div>
+                                <div class="dato-valor">@Model.Email</div>
+                            </div>
+                        </div>
+                        <div class="dato-item">
+                            <div class="dato-icono"><i class="bi bi-telephone"></i></div>
+                            <div>
+                                <div class="dato-label">Teléfono móvil</div>
+                                <div class="dato-valor">@(Model.PhoneNumber ?? "—")</div>
+                            </div>
+                        </div>
+                        <div class="dato-item">
+                            <div class="dato-icono"><i class="bi bi-calendar3"></i></div>
+                            <div>
+                                <div class="dato-label">Fecha de nacimiento</div>
+                                <div class="dato-valor">@(Model.FechaNacimiento?.ToString("dd/MM/yyyy") ?? "—")</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="perfil-main-footer">
+                    <a asp-action="Editar" class="btn btn-primary px-4">
+                        <i class="bi bi-pencil-square"></i> Editar mis datos
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
     @await Html.PartialAsync("_ModalExpiracion")
 </body>
 </html>

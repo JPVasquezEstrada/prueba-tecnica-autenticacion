@@ -1,40 +1,17 @@
-﻿body {
-    background: #f4f6f9;
+﻿/* ==========================================================
+   BASE
+   ========================================================== */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-
-.perfil-navbar {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    color: #fff;
-    padding: .9rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-    .perfil-navbar .brand {
-        font-weight: 700;
-        font-size: 1.2rem;
-    }
-
-    .perfil-navbar a {
-        color: #fff;
-        text-decoration: none;
-        font-size: .9rem;
-    }
-
-.perfil-container {
-    max-width: 780px;
-    margin: 2.5rem auto;
-    padding: 0 1rem;
-}
-
-.perfil-card {
-    background: #fff;
-    border-radius: .75rem;
-    box-shadow: 0 4px 18px rgba(0,0,0,.06);
-    padding: 2rem;
-    animation: fadeSlideIn .5s ease both;
+    background: #f4f6f9;
+    display: grid;
+    grid-template-rows: auto 1fr; /* fila 1: navbar (su alto natural). fila 2: el resto, llena todo lo que sobra */
 }
 
 @keyframes fadeSlideIn {
@@ -49,31 +26,33 @@
     }
 }
 
-.perfil-card h2 {
-    font-weight: 700;
-    margin-bottom: .25rem;
+
+/* ==========================================================
+   NAVBAR (compartido por móvil y PC)
+   ========================================================== */
+
+.perfil-navbar {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: #fff;
+    padding: .9rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-row: 1;
 }
 
-.perfil-card .subtitle {
-    color: #6c757d;
-    margin-bottom: 1.5rem;
-}
+    .perfil-navbar .brand {
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
 
-.perfil-field label {
-    font-size: .8rem;
-    font-weight: 600;
-    color: #6c757d;
-    text-transform: uppercase;
-    letter-spacing: .3px;
-}
+    .perfil-navbar a {
+        color: #fff;
+        text-decoration: none;
+        font-size: .9rem;
+    }
 
-.perfil-field .valor {
-    font-size: 1rem;
-    padding: .5rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-/* Navbar compacto — SOLO MÓVIL */
+/* Botón circular de logout — solo móvil */
 .btn-logout-icon {
     background: rgba(255,255,255,.15);
     border: none;
@@ -104,4 +83,229 @@
 .usuario-nombre-mobile {
     font-size: .9rem;
     font-weight: 500;
+}
+
+
+/* ==========================================================
+   VERSIÓN MÓVIL — tarjeta simple (< 992px)
+   ========================================================== */
+
+.perfil-container {
+    max-width: 780px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+}
+
+.perfil-card {
+    background: #fff;
+    border-radius: .75rem;
+    box-shadow: 0 4px 18px rgba(0,0,0,.06);
+    padding: 2rem;
+    animation: fadeSlideIn .5s ease both;
+}
+
+    .perfil-card h2 {
+        font-weight: 700;
+        margin-bottom: .25rem;
+    }
+
+    .perfil-card .subtitle {
+        color: #6c757d;
+        margin-bottom: 1.5rem;
+    }
+
+.perfil-field label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+}
+
+.perfil-field .valor {
+    font-size: 1rem;
+    padding: .5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+
+/* ==========================================================
+   VERSIÓN ESCRITORIO — layout completo (≥ 992px)
+   ========================================================== */
+
+.perfil-desktop-wrapper {
+    grid-row: 2;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    animation: fadeSlideIn .5s ease both;
+    display: flex;
+}
+
+    .perfil-desktop-wrapper .row-inner {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+/* ---- Panel lateral: foto + identidad ---- */
+.perfil-side {
+    height: 100%;
+    flex: 0 0 28%;
+    position: relative;
+    background-image: linear-gradient(180deg, rgba(15,32,62,.55) 0%, rgba(15,32,62,.88) 85%), url('/images/perfil-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2.5rem 1.75rem;
+    text-align: center;
+}
+
+.perfil-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.15);
+    border: 3px solid rgba(255,255,255,.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.perfil-side h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: .35rem;
+}
+
+.perfil-side .rol {
+    font-size: .85rem;
+    color: rgba(255,255,255,.8);
+    margin-bottom: .9rem;
+}
+
+.perfil-side .badge {
+    font-size: .75rem;
+    padding: .4rem .8rem;
+}
+
+/* ---- Panel principal: datos ---- */
+.perfil-main {
+    height: 100%;
+    flex: 1;
+    background: #fff;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto; /* si algún día hay más campos de los que caben, hace scroll SOLO aquí, no en toda la página */
+}
+
+    .perfil-main > * {
+        max-width: 820px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+.perfil-main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eef1f5;
+}
+
+    .perfil-main-header h3 {
+        font-weight: 700;
+        font-size: 1.6rem;
+        margin: 0;
+    }
+
+    .perfil-main-header .subtitle {
+        color: #6c757d;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+.dato-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid #f4f5f7;
+}
+
+    .dato-item .dato-icono {
+        width: 48px;
+        height: 48px;
+        border-radius: .6rem;
+        background: #eaf1ff;
+        color: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+    }
+
+    .dato-item .dato-label {
+        font-size: .85rem;
+        color: #6c757d;
+        text-transform: uppercase;
+        letter-spacing: .3px;
+        font-weight: 600;
+        margin-bottom: .25rem;
+    }
+
+    .dato-item .dato-valor {
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: #212529;
+    }
+
+.perfil-main-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #eef1f5;
+}
+
+/* ---- Inputs dentro del layout de escritorio (modo edición) ---- */
+.dato-item .dato-input {
+    border: none;
+    border-bottom: 2px solid #e5e9f0;
+    background: transparent;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #212529;
+    padding: .2rem 0;
+    width: 100%;
+    transition: border-color .15s ease;
+}
+
+    .dato-item .dato-input:focus {
+        outline: none;
+        border-bottom-color: #2563eb;
+    }
+
+.dato-item {
+    align-items: center; /* en modo edición se ve mejor centrado verticalmente con el input */
+}
+
+.perfil-main-footer .btn {
+    min-width: 130px;
 }
