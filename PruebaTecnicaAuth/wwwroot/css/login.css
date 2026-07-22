@@ -1,0 +1,181 @@
+﻿/* wwwroot/css/login.css */
+
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ---------- Panel izquierdo: imagen + overlay ---------- */
+.login-visual {
+    position: relative;
+    flex: 1.1;
+    background-image: linear-gradient(160deg, rgba(15, 32, 62, 0.85) 10%, rgba(37, 99, 235, 0.65) 60%, rgba(15, 32, 62, 0.9) 100%), url('/images/campus-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+    color: #fff;
+    overflow: hidden;
+}
+
+    .login-visual::before,
+    .login-visual::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        filter: blur(2px);
+    }
+
+    .login-visual::before {
+        width: 220px;
+        height: 220px;
+        top: -60px;
+        right: -60px;
+        animation: float1 8s ease-in-out infinite;
+    }
+
+    .login-visual::after {
+        width: 140px;
+        height: 140px;
+        bottom: 40px;
+        left: -40px;
+        animation: float2 10s ease-in-out infinite;
+    }
+
+@keyframes float1 {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(25px);
+    }
+}
+
+@keyframes float2 {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.login-visual-brand {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: .5px;
+    z-index: 1;
+}
+
+.login-visual-text {
+    z-index: 1;
+    max-width: 420px;
+}
+
+    .login-visual-text h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: .75rem;
+    }
+
+    .login-visual-text p {
+        color: rgba(255,255,255,0.85);
+        font-size: 1rem;
+    }
+
+/* ---------- Panel derecho: formulario ---------- */
+.login-form-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fb;
+    padding: 2rem;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    animation: fadeSlideIn .6s ease both;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-card h2 {
+    font-weight: 700;
+    margin-bottom: .25rem;
+}
+
+.login-card .subtitle {
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.login-card .form-label {
+    font-weight: 600;
+    font-size: .875rem;
+}
+
+.login-card .input-group-text {
+    background: #fff;
+    border-right: none;
+}
+
+.login-card .form-control {
+    border-left: none;
+    padding: .65rem .75rem;
+}
+
+    .login-card .form-control:focus {
+        box-shadow: none;
+        border-color: #86b7fe;
+    }
+
+.login-card .input-group:focus-within {
+    box-shadow: 0 0 0 .25rem rgba(37, 99, 235, .15);
+    border-radius: .375rem;
+}
+
+.toggle-password {
+    cursor: pointer;
+    background: #fff;
+    border-left: none;
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    border: none;
+    font-weight: 600;
+    padding: .7rem;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+    .btn-login:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(37, 99, 235, .35);
+    }
+
+@media (max-width: 860px) {
+    .login-visual {
+        display: none;
+    }
+}

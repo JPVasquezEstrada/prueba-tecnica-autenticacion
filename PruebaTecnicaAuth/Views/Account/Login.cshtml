@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iniciar sesión — Enchúfate</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="login-wrapper">
+
+        <!-- Panel izquierdo -->
+        <div class="login-visual">
+            <div class="login-visual-brand">
+                <span>☁️</span> enchúfate
+            </div>
+            <div class="login-visual-text">
+                <h1>Gestiona tu perfil de forma simple y segura.</h1>
+                <p>Accede con tu usuario institucional para ver y actualizar tu información.</p>
+            </div>
+            <div></div>
+        </div>
+
+        <!-- Panel derecho: formulario -->
+        <div class="login-form-side">
+            <div class="login-card">
+                <h2>Bienvenido de nuevo</h2>
+                <p class="subtitle">Ingresa tus credenciales para continuar</p>
+
+                @if (TempData["SesionExpirada"] != null)
+                {
+                    <div class="alert alert-info py-2 small">
+                        <i class="bi bi-info-circle"></i> Su sesión ha expirado debido a inactividad. Inicia sesión nuevamente.
+                    </div>
+                }
+
+                <form asp-action="Login" asp-controller="Account" method="post" novalidate>
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label class="form-label">Usuario</label>
+                        <div class="input-group">
+                            <span class="input-group-text">👤</span>
+                            <input type="text" name="userName" class="form-control @(ViewData.ModelState["UserNameError"] != null ? "is-invalid" : "")" placeholder="Ingresar usuario" autocomplete="username" />
+                        </div>
+                        @if (ViewData.ModelState["UserNameError"] != null)
+                        {
+                            <div class="text-danger small mt-1">
+                                @ViewData.ModelState["UserNameError"].Errors.First().ErrorMessage
+                            </div>
+                        }
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Contraseña</label>
+                        <div class="input-group">
+                            <span class="input-group-text">🔒</span>
+                            <input type="password" id="passwordInput" name="password" class="form-control @(ViewData.ModelState["PasswordError"] != null ? "is-invalid" : "")" placeholder="Ingresar contraseña" autocomplete="current-password" />
+                            <span class="input-group-text toggle-password" onclick="togglePassword()">👁️</span>
+                        </div>
+                        @if (ViewData.ModelState["PasswordError"] != null)
+                        {
+                            <div class="text-danger small mt-1">
+                                @ViewData.ModelState["PasswordError"].Errors.First().ErrorMessage
+                            </div>
+                        }
+                    </div>
+
+                    <div class="text-end mb-3">
+                        <a href="#" class="small text-decoration-none">¿Olvidó su contraseña?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-login btn-primary w-100 text-white">Ingresar</button>
+
+                    <p class="text-center small text-muted mt-3 mb-0">
+                        ¿Necesita ayuda? <a href="#" class="text-decoration-none">Contacta con soporte</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            function togglePassword() {
+                const input = document.getElementById('passwordInput');
+                input.type = input.type === 'password' ? 'text' : 'password';
+            }
+    </script>
+</body>
+</html>

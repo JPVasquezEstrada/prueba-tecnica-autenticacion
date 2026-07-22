@@ -1,0 +1,74 @@
+﻿body {
+    background: #f4f6f9;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.perfil-navbar {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: #fff;
+    padding: .9rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .perfil-navbar .brand {
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    .perfil-navbar a {
+        color: #fff;
+        text-decoration: none;
+        font-size: .9rem;
+    }
+
+.perfil-container {
+    max-width: 780px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+}
+
+.perfil-card {
+    background: #fff;
+    border-radius: .75rem;
+    box-shadow: 0 4px 18px rgba(0,0,0,.06);
+    padding: 2rem;
+    animation: fadeSlideIn .5s ease both;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.perfil-card h2 {
+    font-weight: 700;
+    margin-bottom: .25rem;
+}
+
+.perfil-card .subtitle {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.perfil-field label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+}
+
+.perfil-field .valor {
+    font-size: 1rem;
+    padding: .5rem 0;
+    border-bottom: 1px solid #eee;
+}

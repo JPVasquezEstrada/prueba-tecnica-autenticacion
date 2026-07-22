@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cuenta bloqueada — Enchúfate</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="login-form-side" style="min-height:100vh;">
+        <div class="login-card text-center">
+            <div style="font-size:3rem;">🔒</div>
+            <h2 class="mt-2">Cuenta bloqueada temporalmente</h2>
+            <p class="subtitle">
+                Has excedido el número máximo de intentos fallidos. Por seguridad,
+                tu cuenta ha sido bloqueada.
+            </p>
+
+            @if (ViewBag.MinutosRestantes != null)
+            {
+                <div class="alert alert-warning">
+                    Podrás intentarlo nuevamente en <strong>@ViewBag.MinutosRestantes minuto(s)</strong>
+                    (aprox. @ViewBag.HoraDesbloqueo).
+                </div>
+            }
+
+            <a href="@Url.Action("Login", "Account")" class="btn btn-login btn-primary w-100 text-white mt-2">
+                Volver al inicio de sesión
+            </a>
+        </div>
+    </div>
+</body>
+</html>

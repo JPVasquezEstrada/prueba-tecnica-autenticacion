@@ -1,0 +1,71 @@
+﻿@model PruebaTecnicaAuth.Models.PerfilViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editar perfil — Enchúfate</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/perfil.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="perfil-navbar">
+        <div class="brand">☁️ enchúfate</div>
+        <a asp-action="Logout" asp-controller="Account">Cerrar sesión</a>
+    </div>
+
+    <div class="perfil-container">
+        <div class="perfil-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                    <h2>Editar mis datos</h2>
+                    <p class="subtitle">Actualiza tu información personal</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button form="formEditar" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <form id="formEditar" asp-action="Editar" asp-controller="Perfil" method="post" class="row mt-3">
+                @Html.AntiForgeryToken()
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Nombres</label>
+                    <input asp-for="Nombres" class="form-control" />
+                    <span asp-validation-for="Nombres" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Primer apellido</label>
+                    <input asp-for="PrimerApellido" class="form-control" />
+                    <span asp-validation-for="PrimerApellido" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Segundo apellido</label>
+                    <input asp-for="SegundoApellido" class="form-control" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Correo principal</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Teléfono móvil</label>
+                    <input asp-for="Telefono" class="form-control" />
+                    <span asp-validation-for="Telefono" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Fecha de nacimiento</label>
+                    <input asp-for="FechaNacimiento" type="date" class="form-control" />
+                </div>
+            </form>
+        </div>
+    </div>
+    @await Html.PartialAsync("_ModalExpiracion")
+</body>
+</html>
