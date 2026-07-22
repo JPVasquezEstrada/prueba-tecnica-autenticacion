@@ -20,61 +20,47 @@ namespace PruebaTecnicaAuth.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginViewModel());
         }
 
         // POST: /Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(string userName, string password)
+        public async Task<IActionResult> Login(LoginViewModel modelo)
         {
-            // 1. Validar campos vacíos
-            if (string.IsNullOrWhiteSpace(userName))
-            {
-                ModelState.AddModelError("UserNameError", "El usuario es obligatorio.");
-            }
-            if (string.IsNullOrWhiteSpace(password))
-            {
-                ModelState.AddModelError("PasswordError", "La contraseña es obligatoria.");
-            }
+            // La validación de campos vacíos ahora la hacen las [Required] del ViewModel
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(modelo);
             }
 
-            // 2. Buscar el usuario
-            var usuario = await _userManager.FindByNameAsync(userName);
+            var usuario = await _userManager.FindByNameAsync(modelo.UserName);
 
             if (usuario == null)
             {
                 ModelState.AddModelError("UserNameError", "Usuario incorrecto.");
-                return View();
+                return View(modelo);
             }
 
-            // 3. Verificar si está bloqueado ANTES de validar contraseña
             if (await _userManager.IsLockedOutAsync(usuario))
             {
-                return RedirectToAction("Bloqueado", new { usuario = userName });
+                return RedirectToAction("Bloqueado", new { usuario = modelo.UserName });
             }
 
-            // 4. Intentar iniciar sesión (esto internamente valida la contraseña
-            //    y AUTOMÁTICAMENTE incrementa AccessFailedCount si falla,
-            //    y bloquea la cuenta si llega al máximo, gracias a Identity)
-            var resultado = await _signInManager.PasswordSignInAsync(userName, password, isPersistent: false, lockoutOnFailure: true);
+            var resultado = await _signInManager.PasswordSignInAsync(modelo.UserName, modelo.Password, isPersistent: false, lockoutOnFailure: true);
 
             if (resultado.IsLockedOut)
             {
                 Console.WriteLine($"[EMAIL SIMULADO] Se notificó a {usuario.Email} que su cuenta fue bloqueada por 15 minutos.");
-                return RedirectToAction("Bloqueado", new { usuario = userName });
+                return RedirectToAction("Bloqueado", new { usuario = modelo.UserName });
             }
 
             if (!resultado.Succeeded)
             {
                 ModelState.AddModelError("PasswordError", "Contraseña incorrecta.");
-                return View();
+                return View(modelo);
             }
 
-            // 5. Éxito -> redirige al perfil
             return RedirectToAction("Index", "Perfil");
         }
 

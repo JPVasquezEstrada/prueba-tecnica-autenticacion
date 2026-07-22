@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PruebaTecnicaAuth.Models.LoginViewModel
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -45,8 +46,9 @@
                         <label class="form-label">Usuario</label>
                         <div class="input-group">
                             <span class="input-group-text">👤</span>
-                            <input type="text" name="userName" class="form-control @(ViewData.ModelState["UserNameError"] != null ? "is-invalid" : "")" placeholder="Ingresar usuario" autocomplete="username" />
+                            <input asp-for="UserName" class="form-control @(ViewData.ModelState["UserNameError"] != null ? "is-invalid" : "")" placeholder="Ingresar usuario" autocomplete="username" />
                         </div>
+                        <span asp-validation-for="UserName" class="text-danger small"></span>
                         @if (ViewData.ModelState["UserNameError"] != null)
                         {
                             <div class="text-danger small mt-1">
@@ -59,9 +61,10 @@
                         <label class="form-label">Contraseña</label>
                         <div class="input-group">
                             <span class="input-group-text">🔒</span>
-                            <input type="password" id="passwordInput" name="password" class="form-control @(ViewData.ModelState["PasswordError"] != null ? "is-invalid" : "")" placeholder="Ingresar contraseña" autocomplete="current-password" />
+                            <input asp-for="Password" type="password" id="passwordInput" class="form-control @(ViewData.ModelState["PasswordError"] != null ? "is-invalid" : "")" placeholder="Ingresar contraseña" autocomplete="current-password" />
                             <span class="input-group-text toggle-password" onclick="togglePassword()">👁️</span>
                         </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
                         @if (ViewData.ModelState["PasswordError"] != null)
                         {
                             <div class="text-danger small mt-1">
@@ -80,6 +83,8 @@
                         ¿Necesita ayuda? <a href="#" class="text-decoration-none">Contacta con soporte</a>
                     </p>
                 </form>
+
+             
             </div>
         </div>
     </div>
@@ -90,5 +95,7 @@
                 input.type = input.type === 'password' ? 'text' : 'password';
             }
     </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
 </body>
 </html>
