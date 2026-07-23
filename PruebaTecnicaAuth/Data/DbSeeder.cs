@@ -22,9 +22,9 @@ namespace PruebaTecnicaAuth.Data
                 UserName = "admin",
                 Email = "admin@enchufate.pe",
                 EmailConfirmed = true,
-                Nombre = "July Camila",
-                PrimerApellido = "Mendoza",
-                SegundoApellido = "Quispe"
+                Nombre = "Hugo Jean",
+                PrimerApellido = "Vasquez",
+                SegundoApellido = "Estrada"
             };
 
             var resultado = await userManager.CreateAsync(nuevoUsuario, "Admin123");

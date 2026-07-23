@@ -17,7 +17,7 @@
         <div class="brand"><i class="bi bi-cloud-fill"></i> <span class="d-none d-md-inline">enchúfate</span></div>
 
         <div class="d-flex align-items-center gap-3">
-            <!-- Versión PC (sin cambios) -->
+            <!-- Versión PC -->
             <span class="d-none d-md-inline">@Model.Nombre @Model.PrimerApellido</span>
             <a asp-action="Logout" asp-controller="Account" class="d-none d-md-inline">Cerrar sesión</a>
 
@@ -29,9 +29,6 @@
         </div>
     </div>
     <div class="perfil-container d-lg-none">
-        <!-- tu contenido actual, sin tocar nada adentro -->
-        
-
         <div class="perfil-container">
             <div class="perfil-card">
                 <div class="d-flex justify-content-between align-items-start">
@@ -79,7 +76,6 @@
 
     <div class="perfil-desktop-wrapper d-none d-lg-block">
         <div class="row-inner">
-
             <!-- Panel lateral -->
             <div class="perfil-side">
                 <div class="perfil-avatar">
@@ -89,7 +85,6 @@
                 <p class="rol">@Model.UserName</p>
                 <span class="badge bg-success">Activo</span>
             </div>
-
             <!-- Panel principal -->
             <div class="perfil-main">
                 <div class="perfil-main-header">

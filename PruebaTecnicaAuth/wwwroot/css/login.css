@@ -1,11 +1,9 @@
-﻿/* wwwroot/css/login.css */
-
-.login-wrapper {
+﻿.login-wrapper {
     min-height: 100vh;
     display: flex;
 }
 
-/* ---------- Panel izquierdo: imagen + overlay ---------- */
+/* ---------- Panel izquierdo imagen  ---------- */
 .login-visual {
     position: relative;
     flex: 1.1;
@@ -92,7 +90,7 @@
         font-size: 1rem;
     }
 
-/* ---------- Panel derecho: formulario ---------- */
+/* ---------- Panel derecho formulario ---------- */
 .login-form-side {
     flex: 1;
     display: flex;
@@ -180,7 +178,7 @@
     }
 }
 
-/* Franja superior — SOLO MÓVIL */
+/* AGREGAR Franja AZUL LOGIN — SOLO MOVIL */
 .login-topbar {
     background: #0f203e;
     color: #fff;

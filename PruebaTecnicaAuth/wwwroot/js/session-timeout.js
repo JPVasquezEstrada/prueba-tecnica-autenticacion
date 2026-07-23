@@ -47,8 +47,6 @@
         });
     };
 
-    // Cualquier actividad real del usuario reinicia el conteo,
-    // PERO solo si el modal de aviso no está visible todavía
     ['mousemove', 'keydown', 'click', 'scroll'].forEach(evento => {
         document.addEventListener(evento, () => {
             const modalVisible = document.getElementById('modalExpiracion').style.display === 'flex';

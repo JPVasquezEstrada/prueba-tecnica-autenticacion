@@ -1,8 +1,4 @@
-﻿/* ==========================================================
-   BASE
-   ========================================================== */
-
-html, body {
+﻿html, body {
     height: 100%;
     margin: 0;
 }
@@ -11,7 +7,7 @@ body {
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     background: #f4f6f9;
     display: grid;
-    grid-template-rows: auto 1fr; /* fila 1: navbar (su alto natural). fila 2: el resto, llena todo lo que sobra */
+    grid-template-rows: auto 1fr;
 }
 
 @keyframes fadeSlideIn {
@@ -25,11 +21,6 @@ body {
         transform: translateY(0);
     }
 }
-
-
-/* ==========================================================
-   NAVBAR (compartido por móvil y PC)
-   ========================================================== */
 
 .perfil-navbar {
     background: linear-gradient(135deg, #2563eb, #1e40af);
@@ -52,7 +43,7 @@ body {
         font-size: .9rem;
     }
 
-/* Botón circular de logout — solo móvil */
+    /* BONTON CIRCULAR */
 .btn-logout-icon {
     background: rgba(255,255,255,.15);
     border: none;
@@ -85,10 +76,7 @@ body {
     font-weight: 500;
 }
 
-
-/* ==========================================================
-   VERSIÓN MÓVIL — tarjeta simple (< 992px)
-   ========================================================== */
+/* TARJETA PARA VERSIÓN MÓVIL */
 
 .perfil-container {
     max-width: 780px;
@@ -129,9 +117,7 @@ body {
 }
 
 
-/* ==========================================================
-   VERSIÓN ESCRITORIO — layout completo (≥ 992px)
-   ========================================================== */
+/* VERSION DE ESCRITORIO */
 
 .perfil-desktop-wrapper {
     grid-row: 2;
@@ -150,7 +136,7 @@ body {
         height: 100%;
     }
 
-/* ---- Panel lateral: foto + identidad ---- */
+/* PANEL LATERAL */
 .perfil-side {
     height: 100%;
     flex: 0 0 28%;
@@ -200,7 +186,7 @@ body {
     padding: .4rem .8rem;
 }
 
-/* ---- Panel principal: datos ---- */
+/* PANEL PRINCIPAL */
 .perfil-main {
     height: 100%;
     flex: 1;
@@ -209,7 +195,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow-y: auto; /* si algún día hay más campos de los que caben, hace scroll SOLO aquí, no en toda la página */
+    overflow-y: auto;
 }
 
     .perfil-main > * {
@@ -284,7 +270,7 @@ body {
     border-top: 1px solid #eef1f5;
 }
 
-/* ---- Inputs dentro del layout de escritorio (modo edición) ---- */
+/* INPUTS EN MODO EDICIÓN */
 .dato-item .dato-input {
     border: none;
     border-bottom: 2px solid #e5e9f0;
@@ -303,7 +289,7 @@ body {
     }
 
 .dato-item {
-    align-items: center; /* en modo edición se ve mejor centrado verticalmente con el input */
+    align-items: center;
 }
 
 .perfil-main-footer .btn {

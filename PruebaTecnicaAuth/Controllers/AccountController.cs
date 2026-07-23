@@ -16,19 +16,17 @@ namespace PruebaTecnicaAuth.Controllers
             _userManager = userManager;
         }
 
-        // GET: /Account/Login
         [HttpGet]
         public IActionResult Login()
         {
             return View(new LoginViewModel());
         }
 
-        // POST: /Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel modelo)
         {
-            // La validación de campos vacíos ahora la hacen las [Required] del ViewModel
+          
             if (!ModelState.IsValid)
             {
                 return View(modelo);
