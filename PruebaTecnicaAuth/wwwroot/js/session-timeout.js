@@ -1,6 +1,6 @@
 ﻿(function () {
-    const TIEMPO_TOTAL_MIN = 1;
-    const AVISO_ANTES_SEG = 10;
+    const TIEMPO_TOTAL_MIN = 20;
+    const AVISO_ANTES_SEG = 45;
 
     const tiempoTotalMs = TIEMPO_TOTAL_MIN * 60 * 1000;
     const tiempoAvisoMs = tiempoTotalMs - (AVISO_ANTES_SEG * 1000);
